@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const Spot = require("../models/Spot");
+const Booking = require("../models/Booking");
 const parseStringToArray = require("../utils/parseStringToArray");
 
 module.exports = {
@@ -34,7 +35,11 @@ module.exports = {
   },
   async update() {},
   async destroy(request, response) {
-    const spots = await Spot.deleteMany();
-    return response.json(spots);
+    const { spot_id } = request.params;
+    
+    await Booking.deleteMany({ spot: spot_id });
+    const spot = await Spot.deleteMany({ _id: spot_id });
+
+    return response.json(spot);
   }
 };

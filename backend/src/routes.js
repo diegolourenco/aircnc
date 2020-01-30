@@ -11,7 +11,7 @@ const routes = express.Router();
 const upload = multer(uploadConfig);
 
 /**
- * User
+ * Session
  */
 routes.get("/sessions", SessionController.index);
 routes.post("/sessions", SessionController.store);
@@ -23,7 +23,7 @@ routes.delete("/sessions/:id", SessionController.destroy);
  */
 routes.get("/spots", SpotController.index);
 routes.post("/spots", upload.single("thumbnail"), SpotController.store);
-routes.delete("/spots", SpotController.destroy);
+routes.delete("/spots/:spot_id", SpotController.destroy);
 
 /**
  * Dashboard
