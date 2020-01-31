@@ -18,12 +18,19 @@ export default function Dashboard() {
       });
 
       setSpots(response.data);
-      console.log(response.data);
     }
     loadSpots();
   }, []);
 
-  function handleEditSpot(spot) {}
+  function handleEditSpot(spot) {
+    console.log(spot);
+  }
+
+  async function handleDestroySpot(spot_id) {
+    await api.delete(`/spots/${spot_id}`);
+    const spotsFiltered = spots.filter(spot => spot._id !== spot_id);
+    setSpots(spotsFiltered);
+  }
 
   return (
     <>
@@ -35,11 +42,15 @@ export default function Dashboard() {
                 <button
                   className="btn-icon"
                   title="Editar"
-                  onClick={event => event}
+                  onClick={() => handleEditSpot(spot)}
                 >
                   <Edit htmlColor="#fff" fontSize="large" />
                 </button>
-                <button className="btn-icon" title="Remover">
+                <button
+                  className="btn-icon"
+                  title="Remover"
+                  onClick={() => handleDestroySpot(spot._id)}
+                >
                   <Delete htmlColor="#fff" fontSize="large" />
                 </button>
               </div>
