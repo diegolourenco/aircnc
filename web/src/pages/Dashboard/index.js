@@ -61,7 +61,7 @@ export default function Dashboard({ history }) {
         ))}
       </ul>
 
-      <Link to="/new">
+      <Link to="/spots/new">
         <button className="btn btn-primary">Cadastrar novo spot</button>
       </Link>
     </>
