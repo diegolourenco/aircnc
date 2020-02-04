@@ -22,7 +22,9 @@ routes.delete("/sessions/:id", SessionController.destroy);
  * Spots
  */
 routes.get("/spots", SpotController.index);
+routes.get("/spots/:spot_id", SpotController.show);
 routes.post("/spots", upload.single("thumbnail"), SpotController.store);
+routes.put("/spots/:id", SpotController.update);
 routes.delete("/spots/:spot_id", SpotController.destroy);
 
 /**

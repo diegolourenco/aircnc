@@ -1,11 +1,10 @@
 import React, { useState, useMemo } from "react";
-
 import api from "../../services/api";
 
 import "./styles.css";
 import camera from "../../assets/camera.svg";
 
-export default function New({ history }) {
+export default function Form({ history }) {
   const [thumbnail, setThumbnail] = useState(null);
   const [company, setCompany] = useState("");
   const [techs, setTechs] = useState("");
@@ -35,9 +34,13 @@ export default function New({ history }) {
   return (
     <form onSubmit={handleSubmit}>
       <label
-        className={`thumbnail ${thumbnail ? "has-thumbnail" : ""}`}
+        className={`thumbnail ${
+          thumbnail ? "has-thumbnail" : ""
+        }`}
         title="Selecionar imagem"
-        style={{ backgroundImage: `url(${preview})` }}
+        style={{
+          backgroundImage: `url(${preview})`
+        }}
       >
         <input
           type="file"

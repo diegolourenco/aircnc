@@ -12,7 +12,11 @@ module.exports = {
 
     return response.json(spots);
   },
-  async show() {},
+  async show(request, response) {
+    const { spot_id } = request.params;
+    const spot = await Spot.findById(spot_id);
+    return response.json(spot);
+  },
   async store(request, response) {
     const { user_id } = request.headers;
     const { filename } = request.file;
@@ -35,7 +39,18 @@ module.exports = {
 
     return response.json(spot);
   },
-  async update() {},
+  async update(request, response) {
+    const { spot_id } = request.params;
+    const { company, techs, price } = request.body;
+
+    const user = await Spot.findByIdAndUpdate(spot_id, {
+      company,
+      techs,
+      price
+    });
+
+    return response.json(user);
+  },
   async destroy(request, response) {
     const { spot_id } = request.params;
     let spot = await Spot.findById(spot_id);

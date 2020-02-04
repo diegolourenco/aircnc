@@ -6,7 +6,7 @@ import "./styles.css";
 import Edit from "@material-ui/icons/Edit";
 import Delete from "@material-ui/icons/Delete";
 
-export default function Dashboard() {
+export default function Dashboard({ history }) {
   const [spots, setSpots] = useState([]);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function Dashboard() {
   }, []);
 
   function handleEditSpot(spot) {
-    console.log(spot);
+    history.push(`/spots/${spot._id}`);
   }
 
   async function handleDestroySpot(spot_id) {
