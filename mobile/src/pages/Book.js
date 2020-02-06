@@ -15,6 +15,10 @@ export default function Book({ navigation }) {
   const id = navigation.getParam("id");
 
   async function handleSubmit() {
+    if (!date) {
+      Alert.alert("Aviso", "O campo data de interesse é obrigatório!");
+      return;
+    }
     const user_id = await AsyncStorage.getItem("user");
     await api.post(
       `/spots/${id}/bookings`,
