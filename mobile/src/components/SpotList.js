@@ -55,7 +55,7 @@ function SpotList({ tech, navigation }) {
               onPress={() => handleNavigate(item._id)}
               style={styles.button}
             >
-              <Text style={styles.buttonText}>Solictar reserva</Text>
+              <Text style={styles.buttonText}>Solicitar reserva</Text>
             </TouchableOpacity>
           </View>
         )}
